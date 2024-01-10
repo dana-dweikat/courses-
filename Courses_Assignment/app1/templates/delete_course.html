@@ -1,0 +1,28 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Add a student to all bootcamp courses</title>
+    <link rel="stylesheet" href="{% static 'bootstrap.min.css' %}" />
+  </head>
+  <body>
+    <div class="container text-center mt-5">
+        <div class="row text-center mt-5">
+            <h1 class="mb-5">Are you sure you want to delete the following course?</h1>
+            <div>
+                <p>Name:   {{course.name}}</p>
+                <p>Description :  {{course.description}}</p>
+                <button  type="submit" class="btn btn-success   bg-light text-dark  btn-outline-dark m-5 "><a href="{% url 'app1:home'%}">No</a></button><button type="submit" class="btn btn-outline-dark btn-success text-white bg-danger m-5" ><a href="{% url 'app1:destroy'  pk=course.id  %}">yes! i want to delete this</a> </button>
+
+            </div>
+        </div>
+     </div>   
+     <script src="{% static 'bootstrap.bundle.min.js' %}"></script>
+  </body>
+</html>
+ </div>   
+     <script src="{% static 'bootstrap.bundle.min.js' %}"></script>
+  </body>
+</html>

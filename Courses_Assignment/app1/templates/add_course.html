@@ -1,0 +1,71 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Add a student to all bootcamp courses</title>
+    <link rel="stylesheet" href="{% static 'bootstrap.min.css' %}" />
+  </head>
+  <body>
+    <div class="container text-left mt-5">
+      <h1 class="text-left mt-3">Add a new course </h1>
+
+      <!-- <div class="row mb-3">
+        <label for="name" class="col-sm-2 col-form-label"> Name: </label>
+        <div class="col-sm-4">
+          <input required type="text" name="name" id="name" class="form-control" >
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="exampleFormControlTextarea1">Description:</label>
+        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+      </div> -->
+      
+
+
+      <form action="{% url 'app1:home' %}" method="POST">
+        {% csrf_token %}
+
+        {{form.as_p}}
+        <button type="submit" class="btn btn-success  text-white btn-outline-dark m-5">Add</button>
+      </form>
+    
+      {% if messages %}
+        <ul class="messages">    
+            {% for message in messages %}    
+                <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>    
+            {% endfor %}
+        </ul>
+        {% endif %}
+
+      <h1 class="text-left mt-3"> Courses </h1>
+    </div>
+      <div class="container text-center mt-5">
+
+      <table class="table table-striped">
+        <tr>
+          <td>Course Name</td>
+          <td>Description</td>
+          <td>Date added</td>
+          <td>Actions</td>
+        </tr>
+
+        {% for course in courses%}
+        <tr>
+          <td>{{course.name}}</td>
+          <td>{{course.description}}</td>
+          <td>{{course.date_added}}</td>
+          <td><a href="{% url 'app1:remove' pk=course.id %}">remove</a></td>
+        </tr>
+
+        {% endfor %}
+      </table>
+      </div>
+    
+    
+
+    <script src="{% static 'bootstrap.bundle.min.js' %}"></script>
+  </body>
+</html>
